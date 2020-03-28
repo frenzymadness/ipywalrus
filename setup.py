@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='ipywalrus',
-      version='0.1',
+      version='0.2',
       description=('IPython extension which allows assignment expressions (:=)',
                    'at the top level of an expression statement'),
       long_description=long_description,
