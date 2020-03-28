@@ -44,6 +44,8 @@ and load it in IPython or Jupyter
 %load_ext ipywalrus
 ```
 
+If you want to enable this extension permamently, create a default profile (if you don't have one already) `ipython profile create` and then add ipywalrus to the list of extensions in `~/.ipython/profile_default/ipython_config.py`.
+
 ## License
 
 MIT
