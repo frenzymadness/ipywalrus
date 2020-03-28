@@ -36,15 +36,10 @@ def wrap_walrus_assignment(lines):
     # there is no need to modify it
     try:
         ast.parse(code)
-    except SyntaxError:
-        pass
+    except SyntaxError as e:
+        original_exception = e
     else:
         return lines
-
-    # If replacing := by = does not help,
-    # walrus is not the main problem here
-    # and we cannot solve it, raise SyntaxError
-    ast.parse(code.replace(":=", "="))
 
     new_lines = []
     # For each line with walrus, add ()
@@ -52,8 +47,16 @@ def wrap_walrus_assignment(lines):
         if ":=" in line:
             new_lines.append(add_tokens_around(line))
         else:
-            new_lines.append(line)
-    return new_lines
+            new_lines.append(lines)
+
+    new_code = "".join(new_lines)
+
+    try:
+        ast.parse(new_code)
+    except SyntaxError:
+        raise original_exception from None
+    else:
+        return new_lines
 
 
 def load_ipython_extension(ipython):
