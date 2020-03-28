@@ -20,15 +20,15 @@ This rule is included to simplify the choice for the user between an assignment 
 
 is completely valid but my IPython sessions of Jupyter notebooks are full of cells like this one:
 
-![images/standard.png](standard)
+![standard](images/standard.png)
 
 and because it does not work in pure Python
 
-![images/error.png](error)
+![error](images/error.png)
 
 I've prepared a small extension which makes it work:
 
-![images/ipywalrus.png](ipywalrus)
+![ipywalrus](images/ipywalrus.png)
 
 ## Usage
 
