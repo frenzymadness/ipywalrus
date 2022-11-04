@@ -1,7 +1,5 @@
 # IPyWalrus
 
-[![Build Status](https://travis-ci.org/frenzymadness/ipywalrus.svg?branch=master)](https://travis-ci.org/frenzymadness/ipywalrus)
-
 IPyWalrus is a simple IPython (Jupyter) extension which enables you to use the walrus
 operator ([PEP 572 - Assignment Expressions](https://www.python.org/dev/peps/pep-0572/)) `:=`
 for usual assignments in IPython or Jupyter.
