@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Tox tests
       id: test
-      uses: fedora-python/tox-github-action
+      uses: fedora-python/tox-github-action@master
       with:
         tox_env: ${{ matrix.tox_env }}
     strategy:
