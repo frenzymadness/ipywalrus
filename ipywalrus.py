@@ -1,8 +1,8 @@
 import ast
-from io import BytesIO
 import sys
+from io import BytesIO
+from token import COMMENT, ENCODING, INDENT, NEWLINE, OP
 from tokenize import tokenize, untokenize
-from token import OP, COMMENT, NEWLINE, INDENT, ENCODING
 
 
 def add_tokens_around(line):
@@ -19,11 +19,11 @@ def add_tokens_around(line):
             spaces += token.string
             continue
         elif start:
-            result.append((OP, ('(')))
+            result.append((OP, ("(")))
             result.append((token.type, token.string))
             start = False
         elif token.type in (COMMENT, NEWLINE):
-            result.append((OP, (')')))
+            result.append((OP, (")")))
             result.append((token.type, token.string))
         else:
             result.append((token.type, token.string))
@@ -63,8 +63,12 @@ def load_ipython_extension(ipython):
     if sys.version_info >= (3, 8):
         ipython.input_transformers_post.append(wrap_walrus_assignment)
     else:
-        print(("Python {}.{} is too old. Walrus operator is available ",
-               "since Python 3.8".format(*sys.version_info[:2])))
+        print(
+            (
+                "Python {}.{} is too old. Walrus operator is available ",
+                "since Python 3.8".format(*sys.version_info[:2]),
+            )
+        )
 
 
 def unload_ipython_extension(ipython):

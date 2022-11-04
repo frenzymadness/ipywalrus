@@ -1,6 +1,6 @@
+import pytest
 from IPython.testing.globalipapp import start_ipython
 from IPython.utils.io import capture_output
-import pytest
 
 
 @pytest.fixture(scope="session")
@@ -10,9 +10,9 @@ def pure_ipython():
 
 @pytest.fixture(scope="function")
 def ipywalrus_enabled(pure_ipython):
-    pure_ipython.run_line_magic(magic_name='load_ext', line='ipywalrus')
+    pure_ipython.run_line_magic(magic_name="load_ext", line="ipywalrus")
     yield pure_ipython
-    pure_ipython.run_line_magic(magic_name='unload_ext', line='ipywalrus')
+    pure_ipython.run_line_magic(magic_name="unload_ext", line="ipywalrus")
 
 
 tests = [
