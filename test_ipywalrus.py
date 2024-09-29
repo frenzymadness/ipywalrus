@@ -37,3 +37,14 @@ def test_works_with_extension(ipywalrus_enabled, input, expected_output):
     with capture_output() as captured:
         ipywalrus_enabled.run_cell(raw_cell=input)
     assert captured.stdout == "Out[1]: " + str(expected_output) + "\n"
+
+
+@pytest.mark.parametrize("input, expected_output", tests)
+def test_syntaxerror_unloaded_extension(pure_ipython, input, expected_output):
+    pure_ipython.run_line_magic(magic_name="load_ext", line="ipywalrus")
+    pure_ipython.run_line_magic(magic_name="unload_ext", line="ipywalrus")
+
+    with capture_output() as captured:
+        pure_ipython.run_cell(raw_cell=input)
+    assert "SyntaxError: invalid syntax" in captured.stdout
+    assert input in captured.stdout
